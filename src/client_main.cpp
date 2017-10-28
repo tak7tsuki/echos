@@ -4,7 +4,7 @@
  *
  */
 
-#include "server/client.hpp"
+#include "client/client.hpp"
 
 #include <iostream>
 using std::cout;

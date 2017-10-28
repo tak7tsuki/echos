@@ -12,6 +12,7 @@ compile_submodules :
 	mkdir $(BD)/src
 	@echo /src running subsdirectories 
 	$(MAKE) -C server compile
+	$(MAKE) -C client compile
 
 $(TD)/main.o : main.cpp
 	$(CC) -c main.cpp -o $(TD)/main.o

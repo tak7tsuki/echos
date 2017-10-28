@@ -2,13 +2,15 @@
 
 #include "server.hpp"
 
-#include <iostream> // remember to remove
+#include <iostream> 	// remember to remove
 
-// #include <string.h>
+#include <cstring>
 #include <err.h>
 #include <netdb.h>
 #include <unistd.h>
 #include <thread>
+
+#define PORT "12127"	// port of the service
 
 Server::Server()
 {
@@ -53,11 +55,11 @@ void Server::run()
 	// get addressinfo
 	struct addrinfo *res = nullptr;
 	struct addrinfo hints;
-	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = PF_INET;
+	std::memset(&hints, 0, sizeof(hints));
+	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
-	int err = getaddrinfo(nullptr, "tcp", &hints, &res);
+	int err = getaddrinfo(nullptr, PORT, &hints, &res);
 	if (err) {
 		errx(1, "%s", gai_strerror(err));
 		std::cout << "getaddrinfo() returned an error: " << gai_strerror(err) << std::endl;

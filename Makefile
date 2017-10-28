@@ -30,8 +30,8 @@ install:
 compile:
 	@echo Run the subdirectories..
 	$(MAKE) -C src compile
-	$(CC) $(BD)/src/main.o $(BD)/src/server/server.o -o $(BD)/echos
-	$(CC) $(BD)/src/client_main.o $(BD)/src/server/client.o -o $(BD)/echos_client
+	$(CC) -lpthread $(BD)/src/main.o $(BD)/src/server/server.o -o $(BD)/echos
+	$(CC) $(BD)/src/client_main.o $(BD)/src/client/client.o -o $(BD)/echos_client
 
 clean: 
 	@echo Cleaning build directories
